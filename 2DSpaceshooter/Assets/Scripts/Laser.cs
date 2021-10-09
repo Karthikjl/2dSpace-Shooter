@@ -33,6 +33,11 @@ public class Laser : MonoBehaviour
            scoreManager.scoreIncreaser();
            Destroy(this.gameObject);
        }
+       if (other.tag == "BigAstroid")
+       {
+           other.GetComponent<BigAstroid>().destroyBigAstroid();
+           Destroy(this.gameObject);
+       }
    }
 
 

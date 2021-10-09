@@ -12,4 +12,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void MainMenu(string sceneName){
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
+
+
+
 }

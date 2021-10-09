@@ -11,12 +11,14 @@ public class LaserSpawner : MonoBehaviour
     private float timeShoot;
 
     public int reloadTime;
-    public int ammo = 20;
+    public int ammo;
+    public int maxAmmo;
     public Text ammoTxt;
     public bool reloading = false;
 
     private void Start()
     {
+        ammo = maxAmmo;
         ammoTxt.text = ammo.ToString();
     }
     
@@ -52,7 +54,7 @@ public class LaserSpawner : MonoBehaviour
     }
     
     void ammoRefiner(){
-        ammo = 20;
+        ammo = maxAmmo;
         ammoTxt.text = ammo.ToString();
     }
 

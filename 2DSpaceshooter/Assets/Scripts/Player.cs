@@ -4,11 +4,10 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
     Rigidbody2D rb;
-    public Vector2 moveAmount;
+    float moveInput;
     public float speed;
 
     public float minX,maxX;
-    public float minY,maxY;
 
     public int health = 10;
     public int numOfHearts;
@@ -23,50 +22,41 @@ public class Player : MonoBehaviour {
     void Start()
     {
         gm = FindObjectOfType<GameManager>();
-        // transform.position = new Vector2(0f,-7f);
         rb = GetComponent<Rigidbody2D>();
     }
     
     private void Update()
     {
-
         
-        Vector2 moveInput = new Vector2(Input.GetAxis("Horizontal"),Input.GetAxis("Vertical"));
-        moveAmount = moveInput.normalized * speed;
 
         if (transform.position.x > maxX)
         {
-            transform.position = new Vector2(minX,transform.position.y);
+            transform.position = new Vector2(maxX,transform.position.y);
         }
         else if (transform.position.x < minX)
         {
-            transform.position = new Vector2(maxX,transform.position.y);
+            transform.position = new Vector2(minX,transform.position.y);
         }
-
-        if (transform.position.y > maxY)
-        {
-            transform.position = new Vector2(transform.position.x,maxY);
-        }
-        else if (transform.position.y < minY)
-        {
-            transform.position = new Vector2(transform.position.x,minY);
-        }
+        
         if (health > numOfHearts)
         {
             health = numOfHearts;
         }
-
        
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + moveAmount * Time.fixedDeltaTime);
+        
+        moveInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(moveInput * speed,transform.position.y);
+
     }
+    
 
     public void Damage(int DamageAmt){
         health -= DamageAmt;
-        // healthTxt.text = "Health : " + health;
+
         for (int i = 0; i < Hearts.Length; i++)
         {
             if (i < health)
