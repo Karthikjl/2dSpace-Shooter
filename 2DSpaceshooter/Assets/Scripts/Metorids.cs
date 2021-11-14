@@ -13,7 +13,10 @@ public class Metorids : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
-        targetpos = player.transform.position;
+        if (player != null)
+        {
+            targetpos = player.transform.position;            
+        }
     }
 
     private void Update()

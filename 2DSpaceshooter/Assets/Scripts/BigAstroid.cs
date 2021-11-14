@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class BigAstroid : MonoBehaviour
 {
+    public int health;
     public float speed;
     public float lifetime;
     public int DamageAmount;
+    public GameObject deathFx;
 
     private void Start()
     {
@@ -24,12 +26,17 @@ public class BigAstroid : MonoBehaviour
        if (other.tag == "Player")
        {
            other.GetComponent<Player>().Damage(DamageAmount);
-           destroyBigAstroid();
+           Destroy(this.gameObject);
        }
    }
 
     public void destroyBigAstroid(){
-        Destroy(this.gameObject);
+        health--;
+        if (health <= 0)
+        {
+            Instantiate(deathFx,transform.position,Quaternion.identity);
+            Destroy(this.gameObject);            
+        }
     }
 
 
