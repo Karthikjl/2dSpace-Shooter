@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Laser : MonoBehaviour
 {
-   
+    
     public float speed;
     public float lifeTime;
     private ScoreManager scoreManager;
-    public GameObject[] astroids;
-
-
+    public GameObject[] astroids;                                                                                                                                                                                                                                                                                                                                                                                                                                 
+    
     private void Start()
     {
         scoreManager = FindObjectOfType<ScoreManager>();
