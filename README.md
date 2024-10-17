@@ -1,1 +1,1 @@
-Click here to play the game -> (https://karthik-j.itch.io/spaceshooter)
+<h1>To play the game -> <a href="https://karthik-j.itch.io/spaceshooter">Click here</a></h1>
